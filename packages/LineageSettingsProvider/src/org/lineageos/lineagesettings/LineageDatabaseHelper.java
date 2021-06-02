@@ -516,6 +516,10 @@ public class LineageDatabaseHelper extends SQLiteOpenHelper{
         try {
             stmt = db.compileStatement("INSERT OR IGNORE INTO secure(name,value)"
                     + " VALUES(?,?);");
+
+            // OpenInternet HAX
+            loadSetting(stmt, LineageSettings.Secure.TETHERING_ALLOW_VPN_UPSTREAMS, 1);
+
             // Secure
             loadBooleanSetting(stmt, LineageSettings.Secure.ADVANCED_MODE,
                     R.bool.def_advanced_mode);
